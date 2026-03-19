@@ -3,73 +3,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thamirys & Giovani | 10.08.2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>Thamirys & Giovani - Casamento - 10/08/2026</title>
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #fdfaf8; }
-        h1, h2 { font-family: 'Playfair Display', serif; }
-        .bg-cinnamon { background-color: #AF7A6D; }
-        .text-cinnamon { color: #AF7A6D; }
-        .border-cinnamon { border-color: #AF7A6D; }
+        /* --- ESTILOS GLOBAIS E VARIÁVEIS DE COR (PALETA CINNAMON) --- */
+        :root {
+            --color-cinnamon: #8B4513; /* Cor principal, marrom/dourado */
+            --color-cinnamon-dark: #654321;
+            --color-footer-band: #A0522D; /* Faixa de rodapé marrom-avermelhada */
+            --color-background-cream: #fdfaf8; /* Fundo artesanal creme claro */
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --font-main: 'Montserrat', sans-serif;
+            --font-titles: 'Playfair Display', serif;
+            --font-script: 'Cinzel Decorative', serif; /* Para o nome grande e elegante */
+        }
+
+        /* Fontes externas - Simulações de fontes de imagem de alta qualidade */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&family=Cinzel+Decorative:wght@400&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: #f1f1f1; /* Fundo para simulação do telefone */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* Impede rolagem na página principal da simulação */
+        }
+
+        /* --- MOLDURA DO TELEFONE (Simulação de iPhone X/11/12/13/14) --- */
+        .phone-simulation {
+            width: 375px; /* Largura padrão */
+            height: 812px;
+            background-color: var(--color-black);
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 15px solid var(--color-black);
+        }
+
+        /* Notch superior */
+        .phone-simulation .notch {
+            width: 50%;
+            height: 30px;
+            background-color: var(--color-black);
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        /* Barra de status fictícia do navegador no telefone */
+        .phone-browser-bar {
+            background-color: #eee;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 9;
+        }
+        .phone-status-info {
+             width: 100%;
+             display: flex;
+             justify-content: space-between;
+             padding: 0 15px;
+        }
+        .phone-status-info .browser-url {
+            color: #555;
+            font-weight: normal;
+        }
+        .phone-status-info .lock-icon {
+            margin-right: 5px;
+        }
+
+        /* --- CONTEÚDO DO SITE (Responsivo e Clean) --- */
+        .site-container {
+            flex-grow: 1;
+            background-color: var(--color-background-cream);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Permite rolar o conteúdo do site */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Cabeçalho do Site */
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--color-white);
+            color: var(--color-cinnamon);
+            font-size: 14px;
+        }
+
+        .hamburger-menu {
+            font-size: 20px;
+            color: var(--color-cinnamon);
+        }
+
+        .countdown-container {
+            text-align: center;
+        }
+
+        .date-display {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .date-number {
+            font-family: var(--font-titles);
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .date-text {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            color: var(--color-cinnamon);
+        }
+
+        /* Banner Floral */
+        .floral-banner {
+            background-color: var(--color-background-cream);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Imagem de fundo floral representativa de pampas grass e flores */
+        .floral-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparentpng.com/download/watercolor-flower/watercolor-flower-png-floral-art-free-download-23.png'); /* URL fictícia de alta qualidade */
+            background-size: cover;
+            background-position: center top;
+            opacity: 0.15; /* Suave para simular aquarela em papel */
+            z-index: 0;
+        }
+
+        .couple-names {
+            font-family: var(--font-script);
+            font-size: 40px;
+            color: var(--color-cinnamon);
+            position: relative;
+            z-index: 1;
+            margin-bottom: 5px;
+        }
+
+        .wedding-date-banner {
+            font-size: 14px;
+            color: var(--color-cinnamon);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Divisor Cinnamon */
+        .site-main .divider {
+            height: 2px;
+            background-color: var(--color-cinnamon);
+            margin: 0 20px;
+        }
+
+        /* Menu de Navegação (Grelha de 4 itens) */
+        .site-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            padding: 30px;
+            background-color: var(--color-white);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-item:hover {
+            background-color: #fafafa;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            fill: var(--color-cinnamon);
+        }
+
+        .nav-title {
+            font-family: var(--font-titles);
+            color: var(--color-cinnamon);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .nav-description {
+            font-size: 12px;
+            color: #777;
+            white-space: pre-line; /* Permite novas linhas na descrição */
+        }
+
+        /* Rodapé do Site */
+        .site-footer {
+            height: 50px;
+            background-color: var(--color-footer-band);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto; /* Empurra para o final do site container */
+        }
+
+        /* Imagem de cadeado representativa */
+        .site-footer .lock-icon {
+            width: 15px;
+            height: 15px;
+            fill: var(--color-white);
+        }
+
+        /* ADAPTAÇÕES ESPECÍFICAS DE RECRIAÇÃO DA IMAGEM */
+        /* Recriação do cadeado pequeno na faixa marrom inferior */
+        .site-footer {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background-color: var(--color-footer-band);
+        }
+        .site-footer .small-lock {
+            width: 14px;
+            height: 18px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23FFFFFF" d="M144 192V144C144 64.47 208.5 0 288 0C367.5 0 432 64.47 432 144V192H448C465.7 192 480 206.3 480 224V480C480 497.7 465.7 512 448 512H32C14.33 512 0 497.7 0 480V224C0 206.3 14.33 192 32 192H144zM320 192V144C320 117.5 298.5 96 272 96C245.5 96 224 117.5 224 144V192H320z"></path></svg>');
+            background-size: cover;
+            margin-right: 0;
+            margin-bottom: -5px; /* Ajuste para centralizar visualmente na faixa */
+        }
+
+        /* --- ELEMENTOS DE DECORAÇÃO DA MESA --- */
+        .decor-pampas {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            width: 250px;
+            transform: rotate(15deg);
+            opacity: 0.7;
+            z-index: -1;
+        }
+        .decor-flowers {
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            width: 200px;
+            transform: rotate(-10deg);
+            opacity: 0.6;
+            z-index: -1;
+        }
+        .mesa-madeira {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparentpng.com/download/wooden-background/rustic-wood-plank-texture-background-photo-14.png'); /* URL fictícia de alta qualidade */
+            background-size: cover;
+            opacity: 0.1;
+            z-index: -2;
+        }
+
     </style>
 </head>
-<body class="text-gray-800">
+<body>
 
-    <header class="relative flex flex-col items-center justify-center min-h-[60vh] text-center px-4 bg-white">
-        <div class="absolute top-10 flex justify-between w-full max-w-2xl px-6 text-xs tracking-widest uppercase text-gray-400">
-            <span>10 AGOSTO 2026</span>
-            <span class="text-lg text-cinnamon">❤</span>
-            <span>CURITIBA - PR</span>
-        </div>
-        
-        <div class="mt-20">
-            <h1 class="text-5xl md:text-7xl text-cinnamon mb-4">Thamirys & Giovani</h1>
-            <p class="text-lg italic text-gray-500">10 de agosto de 2026</p>
-        </div>
-        
-        <div class="mt-8 opacity-40">
-            <img src="https://www.transparentpng.com/download/floral/watercolor-flower-png-transparent-12.png" alt="floral" class="w-32 mx-auto">
-        </div>
-    </header>
+<div class="mesa-madeira"></div>
+<img src="https://www.transparentpng.com/download/pampas-grass/pampas-grass-free-png-10.png" alt="Pampas decorativo" class="decor-pampas">
+<img src="https://www.transparentpng.com/download/rose/single-stem-pink-rose-free-png-download-14.png" alt="Flores decorativas" class="decor-flowers">
 
-    <main class="max-w-4xl mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-            
-            <section class="p-8 border border-gray-100 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">📷</div>
-                <h2 class="text-2xl text-cinnamon mb-2">Fotos</h2>
-                <p class="text-sm text-gray-500 mb-4">Galeria de ensaios e nossa história em cliques.</p>
-                <button class="px-6 py-2 border border-cinnamon text-cinnamon rounded-full hover:bg-cinnamon hover:text-white transition">Ver Galeria</button>
+<div class="phone-simulation">
+    <div class="notch"></div>
+    <div class="phone-browser-bar">
+        <div class="phone-status-info">
+            <span class="left">9:41</span>
+            <span class="right">
+                <span class="lock-icon">🔒</span>
+                <span class="browser-url">www.tataeandgi.com</span>
+                <span class="refresh-icon">↻</span>
+            </span>
+        </div>
+    </div>
+
+    <div class="site-container">
+        <header class="site-header">
+            <div class="hamburger-menu">☰</div>
+            <div class="countdown-container">
+                DIAS RESTANTES:<br>
+                <span id="days-countdown" style="font-weight: bold;">1201</span>
+            </div>
+            <div class="date-display">
+                <span class="date-number">10</span>
+                <span class="date-text">AGOSTO 2026</span>
+            </div>
+            <div class="search-icon">🔍</div>
+        </header>
+
+        <main class="site-main">
+            <section class="floral-banner">
+                <div class="couple-names">Thamirys & Giovani</div>
+                <div class="wedding-date-banner">10 de agosto de 2026</div>
             </section>
 
-            <section class="p-8 border border-gray-100 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">✨</div>
-                <h2 class="text-2xl text-cinnamon mb-2">Sobre Nós</h2>
-                <p class="text-sm text-gray-500 mb-4">Um pouco da nossa jornada até o "Sim".</p>
-                <button class="px-6 py-2 border border-cinnamon text-cinnamon rounded-full hover:bg-cinnamon hover:text-white transition">Nossa História</button>
-            </section>
+            <div class="divider"></div>
 
-            <section class="p-8 border border-gray-100 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">🎁</div>
-                <h2 class="text-2xl text-cinnamon mb-2">Lista de Presentes</h2>
-                <p class="text-sm text-gray-500 mb-4">Sugestões de mimos para o nosso novo lar.</p>
-                <button class="px-6 py-2 border border-cinnamon text-cinnamon rounded-full hover:bg-cinnamon hover:text-white transition">Ver Lista</button>
-            </section>
+            <nav class="site-nav">
+                <div class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 512 512">
+                        <path d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm176.3 32H352c-17.7 0-32-14.3-32-32s14.3-32 32-32h80.3C449.6 128 464 142.4 464 160.1V368c0 17.7-14.3 32-32 32H80c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80v176h352V192zM128 32C110.3 32 96 17.7 96 0V1c0 17.7-14.3 32-32 32H32c-17.7 0-32 14.3-32 32v1V64c0 17.7 14.3 32 32 32h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H0c17.7 0-32-14.3-32-32V32C-32 14.3-17.7 0 0 0h128c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
+                    </svg>
+                    <div class="nav-title">Fotos</div>
+                    <div class="nav-description">Galeria de Ensaios
+                    Nosso Noivado
+                    O Grande Dia</div>
+                </div>
+                
+                <div class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 512 512">
+                         <path d="M256 0c-8.8 0-16 7.2-16 16s7.2 16 16 16c6.2 0 11.2 5 11.2 11.2V96h-22.4v-52.8c0-6.2 5-11.2 11.2-11.2s11.2-5 11.2-11.2S262.2 0 256 0zm-112 128c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm224 0c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm-336 240c-8.8 0-16 7.2-16 16s7.2 16 16 16c6.2 0 11.2 5 11.2 11.2V464h22.4v-52.8c0-6.2 5-11.2 11.2-11.2s11.2-5 11.2-11.2s-5-11.2-11.2-11.2zM256 368c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm112 240c-8.8 0-16 7.2-16 16s7.2 16 16 16c6.2 0 11.2 5 11.2 11.2V464h22.4v-52.8c0-6.2 5-11.2 11.2-11.2s11.2-5 11.2-11.2s-5-11.2-11.2-11.2z" />
+                    </svg>
+                    <div class="nav-title">Sobre nós</div>
+                    <div class="nav-description">Nossa História
+                    Quem Somos</div>
+                </div>
 
-            <section class="p-8 border border-gray-100 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">💌</div>
-                <h2 class="text-2xl text-cinnamon mb-2">RSVP</h2>
-                <p class="text-sm text-gray-500 mb-4">Confirme sua presença até 10/07/2026.</p>
-                <button class="px-6 py-2 bg-cinnamon text-white rounded-full hover:opacity-90 transition">Confirmar Presença</button>
-            </section>
+                <div class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 512 512">
+                        <path d="M0 128v256c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H64C28.7 64 0 92.7 0 128zm64-32h384c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V128c0-17.7 14.3-32 32-32zm384 128L256 320 64 224V160l192 96 192-96v64z"/>
+                    </svg>
+                    <div class="nav-title">Confirmar presença</div>
+                    <div class="nav-description">Formulário Online</div>
+                </div>
 
-        </div>
-    </main>
+                <div class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 512 512">
+                        <path d="M320 0v96H192V0C86.1 0 0 86.1 0 192v224c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V192C512 86.1 425.9 0 320 0zM64 432V192c0-88.4 71.6-160 160-160v64h64V32c88.4 0 160 71.6 160 160v240H64zM320 96V0c105.9 0 192 86.1 192 192v240c0-17.7-14.3-32-32-32H64c-17.7 0-32 14.3-32 32V192C32 86.1 118.1 0 224 0v96H320z"/>
+                    </svg>
+                    <div class="nav-title">Lista de presentes</div>
+                    <div class="nav-description">Loja 1 (Fictício)
+                    Loja 2 (Fictício)</div>
+                </div>
+            </nav>
+        </main>
 
-    <footer class="text-center py-12 text-gray-400 text-xs tracking-widest uppercase">
-        <p>Feito com amor por T&G</p>
-    </footer>
+        <footer class="site-footer">
+            <div class="small-lock"></div>
+        </footer>
+    </div>
+</div>
+
+<script>
+    // --- JAVASCRIPT ---
+    // Script simples para o contador de dias.
+
+    // Data final do casamento: 10 de agosto de 2026
+    const weddingDate = new Date('2026-08-10T00:00:00-03:00'); // Fuso horário Brasil
+    const countdownElement = document.getElementById('days-countdown');
+
+    // Descomente esta seção para habilitar o cálculo real de dias.
+    // No entanto, para fins de fidelidade total à imagem gerada (1201 dias),
+    // eu mantive o valor estático no HTML acima.
+
+    /*
+    function updateCountdown() {
+        const currentDate = new Date();
+        const difference = weddingDate.getTime() - currentDate.getTime();
+        const daysRemaining = Math.ceil(difference / (1000 * 60 * 60 * 24));
+        countdownElement.textContent = daysRemaining > 0 ? daysRemaining : 0;
+    }
+
+    // Atualiza imediatamente e depois a cada dia
+    updateCountdown();
+    setInterval(updateCountdown, 1000 * 60 * 60 * 24);
+    */
+
+</script>
 
 </body>
 </html>
